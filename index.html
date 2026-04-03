@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tropa Moments</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #111;
+      color: white;
+      margin: 0;
+    }
+
+    .screen {
+      display: none;
+      padding: 50px;
+    }
+
+    .active {
+      display: block;
+    }
+
+    button {
+      padding: 15px 25px;
+      font-size: 18px;
+      margin: 10px;
+      border-radius: 10px;
+      border: none;
+      background: #ff4d4d;
+      color: white;
+      cursor: pointer;
+    }
+
+    input {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: none;
+      margin: 10px;
+    }
+
+    img {
+      width: 200px;
+      margin: 10px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- PASSWORD SCREEN -->
+<div id="screen0" class="screen active">
+  <h1>Enter password 😏</h1>
+  <input type="password" id="passwordInput" placeholder="Password here">
+  <br>
+  <button onclick="checkPassword()">Enter</button>
+</div>
+
+<!-- SCREEN 1 -->
+<div id="screen1" class="screen">
+  <h1>hello kumag welcome sa website 😂</h1>
+  <button onclick="nextScreen(2)">Mag continue</button>
+</div>
+
+<!-- SCREEN 2 -->
+<div id="screen2" class="screen">
+  <h1>Sigurado ka ba gusto mo makita? 😏</h1>
+  <button onclick="nextScreen(3)">Oo</button>
+  <button onclick="alert('Wala ka choice 😂')">Hindi</button>
+</div>
+
+<!-- SCREEN 3 -->
+<div id="screen3" class="screen">
+  <h1>Last chance na to 😆</h1>
+  <button onclick="nextScreen(4)">Sige na nga</button>
+</div>
+
+<!-- SCREEN 4 -->
+<div id="screen4" class="screen">
+  <h1>HAHA eto na 🤣</h1>
+
+  <!-- UPLOAD BUTTON -->
+  <input type="file" id="upload" accept="image/*" multiple>
+  <br>
+
+  <!-- GALLERY -->
+  <div id="gallery">
+<img src="C:\Users\donjie moldez\Downloads\930aab35-2c11-4a0d-a142-50e0127c737c.jpg">
+<img src="C:\Users\donjie moldez\OneDrive\Pictures\Camera Roll\WIN_20260319_17_44_35_Pro.jpg">
+<img src="C:\Users\donjie moldez\OneDrive\Pictures\Camera Roll\WIN_20250419_12_24_44_Pro.jpg"> <img src="C:\Users\donjie moldez\Downloads\930aab35-2c11-4a0d-a142-50e0127c737c.jpg" alt="C:\Users\donjie moldez\Downloads\930aab35-2c11-4a0d-a142-50e0127c737c.jpg">
+<img src="C:\Users\donjie moldez\Downloads\610703267_1623390021981775_5313715613711932368_n.jpg" alt="C:\Users\donjie moldez\Downloads\610703267_1623390021981775_5313715613711932368_n.jpg">
+<img src="C:\Users\donjie moldez\Downloads\645347103_1264972032226628_6988027631077288845_n.jpg" alt="C:\Users\donjie moldez\Downloads\645347103_1264972032226628_6988027631077288845_n.jpg">
+<img src="C:\Users\donjie moldez\Downloads\660991396_900726036121757_3721869151130763155_n.gif" alt="C:\Users\donjie moldez\Downloads\660991396_900726036121757_3721869151130763155_n.gif">
+<img src="C:\Users\donjie moldez\Downloads\656934482_2007452126874869_7142115789685532901_n.jpg" alt="C:\Users\donjie moldez\Downloads\656934482_2007452126874869_7142115789685532901_n.jpg">
+</div>
+
+  <br>
+  <button onclick="location.reload()">Ulitin 😂</button>
+</div>
+<script>
+  function checkPassword() {
+    const pass = document.getElementById("passwordInput").value;
+
+    if (pass === "chupachups") {
+      nextScreen(1);
+    } else {
+      alert("Mali password mo kupal 😂");
+    }
+  }
+
+  function nextScreen(num) {
+    let screens = document.querySelectorAll('.screen');
+    screens.forEach(s => s.classList.remove('active'));
+    document.getElementById('screen' + num).classList.add('active');
+  }
+
+  const uploadInput = document.getElementById("upload");
+  const gallery = document.getElementById("gallery");
+
+  uploadInput.addEventListener("change", function() {
+    const files = this.files;
+
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
+      const reader = new FileReader();
+
+      reader.onload = function(e) {
+        const img = document.createElement("img");
+        img.src = e.target.result;
+        gallery.appendChild(img);
+      };
+
+      reader.readAsDataURL(file);
+    }
+  });
+</script>
+
+</body>
+</html>
